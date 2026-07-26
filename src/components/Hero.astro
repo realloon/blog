@@ -1,0 +1,25 @@
+---
+import IconGithub from '../components/icons/IconGithub.astro'
+---
+
+<section>
+  <strong>hello.</strong>
+  <div>
+    <IconGithub />
+  </div>
+</section>
+
+<style>
+  section {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    margin-top: calc(12vh - var(--size-header));
+    margin-bottom: 12vh;
+  }
+
+  strong {
+    font-size: 2rem;
+  }
+</style>

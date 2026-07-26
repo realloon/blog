@@ -1,0 +1,74 @@
+@import './article.css';
+
+:root {
+  --size-header: 48px;
+  --size-footer: 32px;
+
+  --color-font: light-dark(#333, #ddd);
+  --color-page: light-dark(#fff, #1e1e1e);
+  --color-muted: #999;
+
+  --sans: 'LXGW WenKai', system-ui, sans-serif;
+  --mono: 'Monaco', monospace;
+}
+
+:root {
+  position: relative;
+
+  font-family: var(--sans);
+  line-height: 1;
+  text-autospace: normal;
+
+  min-height: 100vh;
+
+  color-scheme: light dark;
+  color: var(--color-font);
+  background-color: var(--color-page);
+
+  scroll-behavior: smooth;
+  scrollbar-gutter: stable;
+
+  @media (prefers-color-scheme: dark) {
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+body {
+  box-sizing: border-box;
+  width: min(720px, 100%);
+  padding-inline: 16px;
+  padding-bottom: var(--size-footer);
+  margin-block: unset;
+  margin-inline: auto;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  font-size: unset;
+  font-weight: unset;
+  margin-block: unset;
+}
+
+a {
+  color: inherit;
+  text-decoration: unset;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+code {
+  font-family: var(--mono);
+  line-height: 1;
+}
