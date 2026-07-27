@@ -33,19 +33,28 @@ article img {
   max-height: 50vh;
 }
 
-article pre {
-  padding: 8px;
-  border-radius: 4px;
-
-  code {
-    line-height: 1.5;
-  }
-}
-
 article blockquote {
   border-left: 2px solid var(--color-muted);
   padding-left: calc(1em - 2px);
   margin-inline: unset;
   margin-block-start: unset;
   margin-block-end: 0.5rem;
+}
+
+article pre {
+  margin-block-start: unset;
+  margin-block-end: 0.5rem;
+
+  code {
+    line-height: 1.5;
+  }
+}
+
+article .astro-code,
+article .astro-code span {
+  background-color: transparent !important;
+
+  @media (prefers-color-scheme: dark) {
+    color: var(--shiki-dark) !important;
+  }
 }
