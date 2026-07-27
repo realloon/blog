@@ -22,7 +22,6 @@
   color: var(--color-font);
   background-color: var(--color-page);
 
-  scroll-behavior: smooth;
   scrollbar-gutter: stable;
 
   @media (prefers-color-scheme: dark) {
