@@ -1,10 +1,72 @@
 ---
+import { getCollection } from 'astro:content'
+import { formater } from '../utils'
 import Layout from '../layouts/Layout.astro'
-import Hero from '../components/Hero.astro'
-import Posts from '../components/Posts.astro'
+import IconGithub from '../components/icons/IconGithub.astro'
+
+const posts = await getCollection('blog')
+posts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
 ---
 
 <Layout>
-  <Hero />
-  <Posts />
+  <section class="hero">
+    <strong>hello.</strong>
+    <div>
+      <IconGithub />
+    </div>
+  </section>
+
+  <div class="posts">
+    {
+      posts.map(post => (
+        <section>
+          <h2>
+            <a href={`/post/${post.id}`} data-astro-prefetch>
+              {post.data.title}
+            </a>
+          </h2>
+          <time datetime={post.data.pubDate.toISOString()}>
+            {formater.format(post.data.pubDate)}
+          </time>
+        </section>
+      ))
+    }
+  </div>
 </Layout>
+
+<style>
+  .hero {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    margin-top: calc(16dvh - 24px);
+    margin-bottom: 16dvh;
+
+    strong {
+      font-size: 2rem;
+    }
+  }
+
+  .posts {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    section {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    h2 {
+      font-size: 1.125rem;
+      font-weight: bold;
+    }
+
+    time {
+      font-size: 0.875rem;
+      color: var(--color-muted);
+    }
+  }
+</style>
