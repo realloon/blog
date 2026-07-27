@@ -109,7 +109,6 @@ fmt.Println(value) // 1
 ```
 
 > 在 C 语言中，语法为 `int *point = &number;`
-> 在 C# 语言中，语法为 `int* point = &number;`
 
 因此，在指针语境下，符号 `*` 有两种不同的语义：
 
