@@ -1,9 +1,6 @@
 @import './article.css';
 
 :root {
-  --size-header: 48px;
-  --size-footer: 32px;
-
   --color-font: light-dark(#333, #ddd);
   --color-page: light-dark(#fff, #181818);
   --color-muted: #999;
@@ -37,9 +34,9 @@ body {
   box-sizing: border-box;
   width: min(720px, 100%);
   padding-inline: 16px;
-  padding-bottom: var(--size-footer);
-  margin-block: unset;
   margin-inline: auto;
+  margin-block-start: unset;
+  margin-block-end: 78px;
 }
 
 main {
