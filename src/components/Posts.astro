@@ -11,7 +11,7 @@ posts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
     posts.map(post => (
       <section>
         <h2>
-          <a href={`/post/${post.id}/`}>{post.data.title}</a>
+          <a href={`/post/${post.id}`}>{post.data.title}</a>
         </h2>
         <time datetime={post.data.pubDate.toISOString()}>
           {formater.format(post.data.pubDate)}
