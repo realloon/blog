@@ -16,6 +16,12 @@ article h2 {
   position: relative;
   font-size: 1.25rem;
 
+  margin-block-start: 2rem;
+
+  &:first-of-type {
+    margin-block-start: 1rem;
+  }
+
   &:before {
     content: '¶';
     opacity: 0.5;
