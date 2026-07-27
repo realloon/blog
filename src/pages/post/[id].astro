@@ -39,10 +39,10 @@ const { Content } = await render(post)
     <Content />
   </article>
 
-  <section id="back" role="link">
+  <button id="back" role="link">
     <IconBack />
     <span>返回</span>
-  </section>
+  </button>
 </Layout>
 
 <style>
@@ -71,7 +71,13 @@ const { Content } = await render(post)
     align-items: center;
     gap: 4px;
 
+    font-size: inherit;
+    font-family: inherit;
+    background-color: transparent;
+
     width: fit-content;
+    padding: unset;
+    border: unset;
     margin-block: 4rem 2rem;
     cursor: pointer;
 
