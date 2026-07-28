@@ -73,7 +73,7 @@ pubDate: 2026-7-29
 
 > `documentElement` 相当于 CSS 中的 `:root`。
 
-需要保存选中的主题，所以将值存进 `localStorage`，当用户未曾设置时，默认 `light dark` 即跟随系统。
+将值存进 `localStorage` 来保存选中的主题，当用户未曾设置时，默认跟随系统。
 
 ## 超级讨厌的页面闪烁
 
@@ -92,7 +92,7 @@ pubDate: 2026-7-29
 2. JS 设置为 `dark`
 3. HTML 应用 `dark`
 
-对于本站采用的 Astro 框架，提取需要的部分设置为内联即可：
+对于本站采用的 [Astro](https://astro.build) 框架，提取需要的部分设置为内联即可：
 
 ```html
 <script is:inline>
