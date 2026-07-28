@@ -64,17 +64,29 @@ import IconCheck from './icons/IconCheck.astro'
       <IconDark />
     </button>
     <div id="theme-select" popover>
-      <button data-theme="light dark">
+      <button
+        popovertarget="theme-select"
+        popovertargetaction="hide"
+        data-theme="light dark"
+      >
         <IconDevice />
         <span>系统</span>
         <IconCheck />
       </button>
-      <button data-theme="light">
+      <button
+        popovertarget="theme-select"
+        popovertargetaction="hide"
+        data-theme="light"
+      >
         <IconLight style="transform: translateY(-1px);" />
         <span>浅色</span>
         <IconCheck />
       </button>
-      <button data-theme="dark">
+      <button
+        popovertarget="theme-select"
+        popovertargetaction="hide"
+        data-theme="dark"
+      >
         <IconDark style="transform: translateY(-1px);" />
         <span>深色</span>
         <IconCheck />
