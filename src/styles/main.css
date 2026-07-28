@@ -7,7 +7,7 @@
   --color-border: light-dark(#e5e5e5, #292929);
 
   --sans: 'LXGW WenKai', system-ui, sans-serif;
-  --mono: 'Monaco', monospace;
+  --mono: 'Monaco', monospace, 'LXGW WenKai';
 }
 
 :root {
