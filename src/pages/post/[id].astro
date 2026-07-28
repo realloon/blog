@@ -1,9 +1,16 @@
 ---
 import type { CollectionEntry } from 'astro:content'
 import { getCollection, render } from 'astro:content'
-import { formater } from '../../utils'
+import { formater, countMixed } from '../../utils'
 import Layout from '../../layouts/Layout.astro'
 import IconBack from '../../components/icons/IconBack.astro'
+
+interface Props {
+  post: CollectionEntry<'blog'>
+}
+
+const { post } = Astro.props
+const { Content } = await render(post)
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog')
@@ -13,18 +20,7 @@ export async function getStaticPaths() {
     props: { post },
   }))
 }
-
-interface Props {
-  post: CollectionEntry<'blog'>
-}
-
-const { post } = Astro.props
-const { Content } = await render(post)
 ---
-
-<script>
-
-</script>
 
 <script>
   document.querySelector('#back')!.addEventListener('click', () => {
@@ -34,12 +30,16 @@ const { Content } = await render(post)
 
 <Layout title={post.data.title}>
   <article>
-    <hgroup>
+    <header>
       <h1>{post.data.title}</h1>
-      <time datetime={post.data.pubDate.toISOString()}>
-        {formater.format(post.data.pubDate)}
-      </time>
-    </hgroup>
+      <div class="meta">
+        <time datetime={post.data.pubDate.toISOString()}>
+          {formater.format(post.data.pubDate)}
+        </time>
+        <span>{countMixed(post.body ?? '')}字</span>
+      </div>
+    </header>
+
     <Content />
   </article>
 
@@ -50,22 +50,22 @@ const { Content } = await render(post)
 </Layout>
 
 <style>
-  hgroup {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-
-    line-height: 1;
-
-    margin-bottom: 24px;
+  header {
+    margin-bottom: 1rem;
 
     h1 {
       font-size: 1.75rem;
+      line-height: 1.25;
       margin-block-end: unset;
     }
 
-    time {
+    .meta {
       color: var(--color-muted);
+
+      & > *:not(:last-child)::after {
+        content: '·';
+        padding-inline: 0.5em;
+      }
     }
   }
 
