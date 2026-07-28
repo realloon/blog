@@ -78,7 +78,7 @@ article .astro-code span {
   background-color: transparent !important;
 }
 
-:root[data-theme='dark'] article .astro-code,
-:root[data-theme='dark'] article .astro-code span {
+:root[data-current-theme='dark'] article .astro-code,
+:root[data-current-theme='dark'] article .astro-code span {
   color: var(--shiki-dark) !important;
 }

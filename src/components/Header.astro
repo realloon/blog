@@ -7,14 +7,14 @@ import IconCheck from './icons/IconCheck.astro'
 ---
 
 <script is:inline>
-  const theme = localStorage.getItem('theme') ?? 'light dark'
+  const userTheme = localStorage.getItem('theme') ?? 'light dark'
   const systemTheme = matchMedia('(prefers-color-scheme: dark)').matches
     ? 'dark'
     : 'light'
-  const activeTheme = theme === 'light dark' ? systemTheme : theme
+  const currentTheme = userTheme === 'light dark' ? systemTheme : userTheme
 
-  document.documentElement.style.colorScheme = theme
-  document.documentElement.dataset.theme = activeTheme
+  document.documentElement.style.colorScheme = userTheme
+  document.documentElement.dataset.currentTheme = currentTheme
 </script>
 
 <script>
@@ -23,35 +23,35 @@ import IconCheck from './icons/IconCheck.astro'
   )
   const media = window.matchMedia('(prefers-color-scheme: dark)')
 
-  let currentTheme = localStorage.getItem('theme') ?? 'light dark'
+  let userTheme = localStorage.getItem('theme') ?? 'light dark'
 
-  applyTheme(currentTheme)
+  applyTheme(userTheme)
 
   media.addEventListener('change', () => {
-    if (currentTheme !== 'light dark') return
-    applyTheme(currentTheme)
+    if (userTheme !== 'light dark') return
+    applyTheme(userTheme)
   })
 
   themeButtons.forEach(button => {
     button.addEventListener('click', () => {
-      currentTheme = button.dataset.theme!
-      localStorage.setItem('theme', currentTheme)
-      applyTheme(currentTheme)
+      userTheme = button.dataset.theme!
+      localStorage.setItem('theme', userTheme)
+      applyTheme(userTheme)
     })
   })
 
-  function applyTheme(theme: string) {
-    document.documentElement.style.colorScheme = theme
+  function applyTheme(userTheme: string) {
+    document.documentElement.style.colorScheme = userTheme
 
-    const displayTheme =
-      theme === 'light dark' ? (media.matches ? 'dark' : 'light') : theme
+    const systemTheme = media.matches ? 'dark' : 'light'
+    const currentTheme = userTheme === 'light dark' ? systemTheme : userTheme
 
-    document.documentElement.dataset.theme = displayTheme
+    document.documentElement.dataset.currentTheme = currentTheme
 
     themeButtons.forEach(button => {
       button.setAttribute(
         'aria-pressed',
-        String(button.dataset.theme === theme),
+        String(button.dataset.theme === userTheme),
       )
     })
   }
@@ -149,11 +149,13 @@ import IconCheck from './icons/IconCheck.astro'
     }
   }
 
-  :global(:root[data-theme='light']) .theme-btn-wrap svg:first-of-type {
+  :global(:root[data-current-theme='light'])
+    .theme-btn-wrap
+    svg:first-of-type {
     opacity: 1;
   }
 
-  :global(:root[data-theme='dark']) .theme-btn-wrap svg:last-of-type {
+  :global(:root[data-current-theme='dark']) .theme-btn-wrap svg:last-of-type {
     opacity: 1;
   }
 
