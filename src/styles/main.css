@@ -1,9 +1,9 @@
 @import './article.css';
 
 :root {
-  --color-font: light-dark(#333, #ddd);
+  --color-font: light-dark(#1e1e1e, #e0e0e0);
   --color-page: light-dark(#fff, #181818);
-  --color-muted: #6b6b6b;
+  --color-muted: light-dark(#6b6b6b, #9b9b9b);
   --color-border: light-dark(#e5e5e5, #292929);
 
   --sans: 'LXGW WenKai', system-ui, sans-serif;
