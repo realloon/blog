@@ -66,3 +66,7 @@ code {
   font-family: var(--mono);
   line-height: 1;
 }
+
+svg {
+  vertical-align: bottom;
+}

@@ -11,9 +11,9 @@ posts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
 <Layout>
   <section class="hero">
     <strong>hello.</strong>
-    <div>
+    <address>
       <a href="https://github.com/realloon"><IconGithub /></a>
-    </div>
+    </address>
   </section>
 
   <div class="posts">
@@ -45,6 +45,11 @@ posts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
 
     strong {
       font-size: 2rem;
+    }
+
+    address {
+      display: flex;
+      gap: 1rem;
     }
   }
 
