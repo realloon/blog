@@ -11,7 +11,7 @@ pubDate: 2026-1-27
 
 模型的上下文窗口有限。目前（2026年1月）的主流LLM上下文窗口集中在 256K 左右，而 RimWorld 的源码，光 C# 就超过一百万行，XML 更是四百多万行，即使是有 2M 上下文的 Grok 4 Fast，也是远远无法吞下如此庞大的代码量的。
 
-上下文越长，模型表现越差。理想情况下，应提供给LLM尽可能少的必要消息，无关的、冗余的信息只是噪音，它们不仅浪费 Tokens，还会降低 LLM 的输出表现[^1]。尽管不是越短的上下文越好，但更长的上下文往往是坏味道。
+上下文越长，模型表现越差。理想情况下，应提供给LLM尽可能少的必要消息。尽管不是越短的上下文越好，但更长的上下文往往是坏味道。无关的、冗余的信息只是噪音，它们不仅浪费 Tokens，还会降低 LLM 的输出表现[^1]：
 
 ![instructionfollowing](https://www.humanlayer.dev/blog/writing-a-good-claude-md/instructionfollowing.png)
 
