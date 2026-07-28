@@ -48,6 +48,10 @@ article a:hover {
   text-decoration: underline;
 }
 
+article sup {
+  vertical-align: top;
+}
+
 article img {
   max-width: 100%;
 }
