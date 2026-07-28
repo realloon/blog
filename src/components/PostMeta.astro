@@ -1,0 +1,30 @@
+---
+import type { CollectionEntry } from 'astro:content'
+import { formater, countMixed } from '../utils'
+
+interface Props {
+  post: CollectionEntry<'blog'>
+}
+
+const { post } = Astro.props
+---
+
+<div class="meta">
+  <time datetime={post.data.pubDate.toISOString()}>
+    {formater.format(post.data.pubDate)}
+  </time>
+  <span>{countMixed(post.body ?? '')}字</span>
+</div>
+
+<style>
+  .meta {
+    font-size: 0.875rem;
+    line-height: 1;
+    color: var(--color-muted);
+
+    & > *:not(:last-child)::after {
+      content: '·';
+      padding-inline: 0.5em;
+    }
+  }
+</style>

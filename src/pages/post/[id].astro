@@ -1,8 +1,8 @@
 ---
 import type { CollectionEntry } from 'astro:content'
 import { getCollection, render } from 'astro:content'
-import { formater, countMixed } from '../../utils'
 import Layout from '../../layouts/Layout.astro'
+import PostMeta from '../../components/PostMeta.astro'
 import IconBack from '../../components/icons/IconBack.astro'
 
 interface Props {
@@ -26,12 +26,7 @@ export async function getStaticPaths() {
   <article>
     <header>
       <h1>{post.data.title}</h1>
-      <div class="meta">
-        <time datetime={post.data.pubDate.toISOString()}>
-          {formater.format(post.data.pubDate)}
-        </time>
-        <span>{countMixed(post.body ?? '')}字</span>
-      </div>
+      <PostMeta post={post} />
     </header>
 
     <Content />
@@ -50,16 +45,6 @@ export async function getStaticPaths() {
     h1 {
       font-size: 1.75rem;
       line-height: 1.25;
-      margin-block-end: unset;
-    }
-
-    .meta {
-      color: var(--color-muted);
-
-      & > *:not(:last-child)::after {
-        content: '·';
-        padding-inline: 0.5em;
-      }
     }
   }
 
