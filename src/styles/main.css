@@ -60,10 +60,6 @@ p {
 a {
   color: inherit;
   text-decoration: unset;
-
-  &:hover {
-    text-decoration: underline;
-  }
 }
 
 code {

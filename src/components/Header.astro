@@ -1,9 +1,14 @@
 ---
-
+import IconSmile from '../components/icons/IconSmile.astro'
 ---
 
 <header>
-  <h1><a href="/">Vortex's blog</a></h1>
+  <a href="/">
+    <h1>
+      <IconSmile />
+      Vortex's blog
+    </h1>
+  </a>
 </header>
 
 <style>
@@ -17,6 +22,10 @@
   }
 
   h1 {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+
     font-weight: bold;
   }
 </style>
