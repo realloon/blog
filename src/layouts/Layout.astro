@@ -14,6 +14,16 @@ const { title = "Vortex's blog" } = Astro.props
 <html lang="zh-Hans">
   <head>
     <meta charset="utf-8" />
+    <script is:inline>
+      const theme = localStorage.getItem('theme') ?? 'light dark'
+      const systemTheme = matchMedia('(prefers-color-scheme: dark)').matches
+        ? 'dark'
+        : 'light'
+      const activeTheme = theme === 'light dark' ? systemTheme : theme
+
+      document.documentElement.style.colorScheme = theme
+      document.documentElement.dataset.theme = activeTheme
+    </script>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
     <link

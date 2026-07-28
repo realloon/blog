@@ -7,9 +7,6 @@ import IconCheck from './icons/IconCheck.astro'
 ---
 
 <script>
-  const [sun, moon] = document.querySelectorAll<HTMLElement>(
-    '.theme-btn-wrap > svg',
-  )
   const themeButtons = document.querySelectorAll<HTMLButtonElement>(
     '#theme-select > [data-theme]',
   )
@@ -38,8 +35,7 @@ import IconCheck from './icons/IconCheck.astro'
     const displayTheme =
       theme === 'light dark' ? (media.matches ? 'dark' : 'light') : theme
 
-    sun.style.opacity = displayTheme === 'light' ? '1' : '0'
-    moon.style.opacity = displayTheme === 'dark' ? '1' : '0'
+    document.documentElement.dataset.theme = displayTheme
 
     themeButtons.forEach(button => {
       button.setAttribute(
@@ -128,7 +124,6 @@ import IconCheck from './icons/IconCheck.astro'
     cursor: pointer;
 
     svg {
-      transition: 1s;
       opacity: 0;
     }
 
@@ -137,6 +132,14 @@ import IconCheck from './icons/IconCheck.astro'
       top: 0;
       right: 0;
     }
+  }
+
+  :global(html[data-theme='light']) .theme-btn-wrap svg:first-of-type {
+    opacity: 1;
+  }
+
+  :global(html[data-theme='dark']) .theme-btn-wrap svg:last-of-type {
+    opacity: 1;
   }
 
   #theme-select {
