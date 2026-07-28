@@ -11,12 +11,12 @@ pubDate: 2026-1-27
 
 模型的上下文窗口有限。目前（2026年1月）的主流LLM上下文窗口集中在 256K 左右，而 RimWorld 的源码，光 C# 就超过一百万行，XML 更是四百多万行，即使是有 2M 上下文的 Grok 4 Fast，也是远远无法吞下如此庞大的代码量的。
 
-上下文越长，模型表现越差。理想情况下，应提供给LLM尽可能少的必要消息，无关的、冗余的信息只是噪音，它们不仅浪费 Tokens，还会降低 LLM 的输出表现。尽管不是越短的上下文越好，但更长的上下文往往是坏味道。
+上下文越长，模型表现越差。理想情况下，应提供给LLM尽可能少的必要消息，无关的、冗余的信息只是噪音，它们不仅浪费 Tokens，还会降低 LLM 的输出表现[^1]。尽管不是越短的上下文越好，但更长的上下文往往是坏味道。
+
+![instructionfollowing](https://www.humanlayer.dev/blog/writing-a-good-claude-md/instructionfollowing.png)
 
 业界早有解决上述问题的成熟方案，即建立代码库索引。实际上，你用 Argument Code、Cursor 或 Claude Code 等 AI 客户端打开 RimWorld 的源码仓库，你就享受到了。但这仍存在一些不足之处。首先，这要求你反编译一份 RimWorld 源码，并将其作为Agent的工作目录，这就存在不便之处。其次，这种检索方式基于通用方案，未对 RimWorld 的特定架构做针对设计，效率较差。再者，面对如此庞大的体量，不仅难以保证检索的质量和效果，还会消耗大量 Tokens。
 
-RimSage 为解决上述问题而生。
+[RimSage](https://github.com/realloon/RimSage) 因上述思考而生。它是我开发的 MCP Server，为 Agent 提供一系列工具，让其像专业程序员那样在 RimWorld 源码中高效检索信息，掌握真相。
 
-RimSage 是我开发的 MCP Server，它为 Agent 提供一系列工具，让其能像专业程序员那样在 RimWorld 源码中高效检索信息，掌握真相。
-
-> 你可能曾经听说过 RiMCP Hybrid，它是一个功能类似且同样优秀的项目，其作者[五步蛇]才华横溢而谦逊友好，在与他的长期交流中，我深受其激励和感染。RiMCP Hybrid 基于经典 RAG 架构，而 RimSage 的宗旨在于充分信任 LLM 本身的智能，它们在技术上有所不同。
+[^1]: <https://www.humanlayer.dev/blog/writing-a-good-claude-md>
