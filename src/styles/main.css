@@ -25,7 +25,7 @@
 
   scrollbar-gutter: stable;
 
-  @media (prefers-color-scheme: dark) {
+  &[data-theme='dark'] {
     -webkit-font-smoothing: antialiased;
   }
 }

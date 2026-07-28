@@ -76,8 +76,9 @@ article pre {
 article .astro-code,
 article .astro-code span {
   background-color: transparent !important;
+}
 
-  @media (prefers-color-scheme: dark) {
-    color: var(--shiki-dark) !important;
-  }
+:root[data-theme='dark'] article .astro-code,
+:root[data-theme='dark'] article .astro-code span {
+  color: var(--shiki-dark) !important;
 }
