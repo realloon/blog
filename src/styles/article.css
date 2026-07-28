@@ -37,6 +37,13 @@ article p {
   margin-block-end: 0.5rem;
 }
 
+article ol,
+article ul {
+  padding-left: 2em;
+  margin-block-start: unset;
+  margin-block-end: 0.5rem;
+}
+
 article a:hover {
   text-decoration: underline;
 }
