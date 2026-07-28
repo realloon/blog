@@ -6,6 +6,14 @@ import IconGithub from '../components/icons/IconGithub.astro'
 
 const posts = await getCollection('blog')
 posts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
+
+function excerpt(markdown: string) {
+  return markdown
+    .replace(/## \S+\n/g, '')
+    .replace(/!\[[^\]]*\]\(\S*\)/g, '')
+    .replace(/\s\s+/g, '')
+    .slice(0, 140)
+}
 ---
 
 <Layout>
@@ -22,11 +30,10 @@ posts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
     {
       posts.map(post => (
         <section>
-          <h2>
-            <a href={`/post/${post.id}`} data-astro-prefetch>
-              {post.data.title}
-            </a>
-          </h2>
+          <a href={`/post/${post.id}`} data-astro-prefetch>
+            <h2>{post.data.title}</h2>
+            <p>{excerpt(post.body ?? '')}</p>
+          </a>
           <PostMeta post={post} />
         </section>
       ))
@@ -62,16 +69,22 @@ posts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
       display: flex;
       flex-direction: column;
       gap: 8px;
-    }
 
-    h2 {
-      font-size: 1.125rem;
-      font-weight: bold;
-    }
+      h2 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+      }
 
-    time {
-      font-size: 0.875rem;
-      color: var(--color-muted);
+      p {
+        color: var(--color-muted);
+        line-height: 1.5;
+
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+      }
     }
   }
 </style>
