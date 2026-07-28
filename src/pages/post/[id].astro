@@ -22,12 +22,6 @@ export async function getStaticPaths() {
 }
 ---
 
-<script>
-  document.querySelector('#back')!.addEventListener('click', () => {
-    navigation.back()
-  })
-</script>
-
 <Layout title={post.data.title}>
   <article>
     <header>
@@ -43,10 +37,10 @@ export async function getStaticPaths() {
     <Content />
   </article>
 
-  <button id="back" role="link">
+  <a class="back" href="/">
     <IconBack />
     <span>返回</span>
-  </button>
+  </a>
 </Layout>
 
 <style>
@@ -69,21 +63,13 @@ export async function getStaticPaths() {
     }
   }
 
-  #back {
-    align-self: center;
+  .back {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 4px;
 
-    font-size: inherit;
-    font-family: inherit;
-    background-color: transparent;
-
-    width: fit-content;
-    padding: unset;
-    border: unset;
     margin-block: 4rem 2rem;
-    cursor: pointer;
 
     transition: 0.2s;
     opacity: 0.5;
