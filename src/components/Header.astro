@@ -1,6 +1,54 @@
 ---
 import IconSmile from '../components/icons/IconSmile.astro'
+import IconDevice from '../components/icons/IconDevice.astro'
+import IconLight from './icons/IconLight.astro'
+import IconDark from './icons/IconDark.astro'
+import IconCheck from './icons/IconCheck.astro'
 ---
+
+<script>
+  const [sun, moon] = document.querySelectorAll<HTMLElement>(
+    '.theme-btn-wrap > svg',
+  )
+  const themeButtons = document.querySelectorAll<HTMLButtonElement>(
+    '#theme-select > [data-theme]',
+  )
+  const media = window.matchMedia('(prefers-color-scheme: dark)')
+
+  let currentTheme = localStorage.getItem('theme') ?? 'light dark'
+
+  applyTheme(currentTheme)
+
+  media.addEventListener('change', () => {
+    if (currentTheme !== 'light dark') return
+    applyTheme(currentTheme)
+  })
+
+  themeButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      currentTheme = button.dataset.theme!
+      localStorage.setItem('theme', currentTheme)
+      applyTheme(currentTheme)
+    })
+  })
+
+  function applyTheme(theme: string) {
+    document.documentElement.style.colorScheme = theme
+
+    const displayTheme =
+      theme === 'light dark' ? (media.matches ? 'dark' : 'light') : theme
+
+    sun.style.opacity = displayTheme === 'light' ? '1' : '0'
+    moon.style.opacity = displayTheme === 'dark' ? '1' : '0'
+
+    themeButtons.forEach(button => {
+      button.setAttribute(
+        'aria-pressed',
+        String(button.dataset.theme === theme),
+      )
+    })
+  }
+</script>
 
 <header>
   <a href="/">
@@ -9,6 +57,30 @@ import IconSmile from '../components/icons/IconSmile.astro'
       Vortex's blog
     </h1>
   </a>
+
+  <section>
+    <button class="theme-btn-wrap" popovertarget="theme-select">
+      <IconLight />
+      <IconDark />
+    </button>
+    <div id="theme-select" popover>
+      <button data-theme="light dark">
+        <IconDevice />
+        <span>系统</span>
+        <IconCheck />
+      </button>
+      <button data-theme="light">
+        <IconLight style="transform: translateY(-1px);" />
+        <span>浅色</span>
+        <IconCheck />
+      </button>
+      <button data-theme="dark">
+        <IconDark style="transform: translateY(-1px);" />
+        <span>深色</span>
+        <IconCheck />
+      </button>
+    </div>
+  </section>
 </header>
 
 <style>
@@ -27,5 +99,84 @@ import IconSmile from '../components/icons/IconSmile.astro'
     gap: 4px;
 
     font-weight: bold;
+  }
+
+  section {
+    display: flex;
+    align-items: center;
+  }
+
+  .theme-btn-wrap {
+    position: relative;
+    anchor-name: --theme-btn;
+
+    padding: unset;
+    border: unset;
+    background-color: transparent;
+    cursor: pointer;
+
+    svg {
+      transition: 1s;
+      opacity: 0;
+    }
+
+    svg:last-of-type {
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+  }
+
+  #theme-select {
+    position-anchor: --theme-btn;
+    position-area: bottom span-left;
+    top: 8px;
+    right: -8px;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 2px;
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    box-shadow: 0 2px 8px 0 #00000016;
+
+    button {
+      display: flex;
+      align-items: center;
+
+      font-size: 0.875rem;
+      font-family: inherit;
+      line-height: 1;
+
+      padding-inline: 8px;
+      padding-block: 8px;
+      border: unset;
+      border-radius: 10px;
+      cursor: pointer;
+
+      transition: 0.2s;
+      background-color: transparent;
+
+      &:hover {
+        background-color: color-mix(
+          in srgb,
+          var(--color-page) 93%,
+          var(--color-font)
+        );
+      }
+
+      span {
+        margin-inline: 8px 12px;
+      }
+
+      svg:last-of-type {
+        opacity: 0;
+      }
+
+      &[aria-pressed='true'] svg:last-of-type {
+        opacity: 1;
+      }
+    }
   }
 </style>
