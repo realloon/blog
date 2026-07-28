@@ -1,5 +1,5 @@
 ---
-title: RimSage
+title: RimSage：面向 Agent 的 RimWorld 源码检索工具
 pubDate: 2026-1-27
 ---
 
@@ -17,6 +17,6 @@ pubDate: 2026-1-27
 
 业界早有解决上述问题的成熟方案，即建立代码库索引。实际上，你用 Argument Code、Cursor 或 Claude Code 等 AI 客户端打开 RimWorld 的源码仓库，你就享受到了。但这仍存在一些不足之处。首先，这要求你反编译一份 RimWorld 源码，并将其作为Agent的工作目录，这就存在不便之处。其次，这种检索方式基于通用方案，未对 RimWorld 的特定架构做针对设计，效率较差。再者，面对如此庞大的体量，不仅难以保证检索的质量和效果，还会消耗大量 Tokens。
 
-[RimSage](https://github.com/realloon/RimSage) 因上述思考而生。它是我开发的 MCP Server，为 Agent 提供一系列工具，让其像专业程序员那样在 RimWorld 源码中高效检索信息，掌握真相。
+[RimSage](https://github.com/realloon/RimSage) 因上述思考而生。它是我开发的 [MCP](https://modelcontextprotocol.io/docs/getting-started/intro) Server，为 Agent 提供一系列工具，让其像专业程序员那样在 RimWorld 源码中高效检索信息，掌握真相。
 
 [^1]: <https://www.humanlayer.dev/blog/writing-a-good-claude-md>
