@@ -24,7 +24,6 @@
   background-color: var(--color-page);
 
   scrollbar-gutter: stable;
-  scroll-padding-top: 0.25rem;
 
   &[data-current-theme='dark'] {
     -webkit-font-smoothing: antialiased;
