@@ -1,0 +1,63 @@
+---
+import { getCollection } from 'astro:content'
+import PostMeta from '../components/PostMeta.astro'
+
+const posts = await getCollection('blog')
+posts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
+
+function excerpt(markdown: string) {
+  return markdown
+    .replace(/## \S+\n/g, '')
+    .replace(/> /g, '')
+    .replace(/```.*?```/gs, '[代码]。')
+    .replace(/!\[[^\]]*\]\(\S*\)/g, '[图片]。')
+    .replace(/\[([^\]]*)\]\(\S*\)/g, '$1')
+    .replace(/\s\s+/g, '')
+    .slice(0, 140)
+}
+---
+
+<div class="posts">
+  {
+    posts.map(post => (
+      <section>
+        <a href={`/post/${post.id}`} data-astro-prefetch>
+          <h2>{post.data.title}</h2>
+          <p>{excerpt(post.body ?? '')}</p>
+        </a>
+        <PostMeta post={post} />
+      </section>
+    ))
+  }
+</div>
+
+<style>
+  .posts {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    section {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+
+      h2 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5;
+        margin-bottom: 0.125rem;
+      }
+
+      p {
+        color: var(--color-muted);
+        line-height: 1.5;
+
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+      }
+    }
+  }
+</style>
