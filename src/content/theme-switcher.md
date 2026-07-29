@@ -13,9 +13,9 @@ pubDate: 2026-7-29
 
 这是原生层面的，例如，它会让你的浏览器默认滚动条也变色。
 
-> 实际上，[用户代理样式](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Cascade/Introduction#user-agent_stylesheets)中就有深色模式下的样式。无需定制的话，这三行代码就能让整个网站支持深色模式了。
+> [用户代理样式](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Cascade/Introduction#user-agent_stylesheets)中就有深色模式下的样式，无需定制的话，这就足够让页面提供深色模式了。
 
-[`color-scheme`](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/color-scheme) 在 2022 年就广泛可用了，`light dark` 声明网页同时提供浅色和深色模式。配合媒体查询，就能完整地定制：
+[`color-scheme`](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/color-scheme) 在 2022 年广泛可用，`light dark` 声明网页同时提供浅色和深色模式。配合媒体查询，就能完整地定制：
 
 ```css
 @media (prefers-color-scheme: dark) {
@@ -27,7 +27,7 @@ pubDate: 2026-7-29
 
 这已经是前端程序员们多年以来梦寐以求的了，过去还得写两套 CSS 来回切换。
 
-考虑到通常情况下，只是需要修改颜色，2024 年广泛可用的 [`light-dark()`](https://developer.mozilla.org/docs/Web/CSS/Reference/Values/color_value/light-dark) 进一步简化了代码：
+考虑到通常只是需要修改颜色，2024 年广泛可用的 [`light-dark()`](https://developer.mozilla.org/docs/Web/CSS/Reference/Values/color_value/light-dark) 进一步简化了代码：
 
 ```css
 :root {
