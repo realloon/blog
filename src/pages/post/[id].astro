@@ -25,6 +25,12 @@ export async function getStaticPaths() {
 <Layout title={post.data.title}>
   <article>
     <header>
+      <nav>
+        <ol>
+          <li><a href="/">首页</a></li>
+          <li><a href="/post">Posts</a></li>
+        </ol>
+      </nav>
       <h1>{post.data.title}</h1>
       <PostMeta post={post} />
     </header>
@@ -45,6 +51,22 @@ export async function getStaticPaths() {
     h1 {
       font-size: 1.75rem;
       line-height: 1.25;
+    }
+  }
+
+  nav > ol {
+    display: flex;
+
+    line-height: 1;
+    padding-inline-start: unset;
+    list-style-type: none;
+
+    li:not(:last-of-type)::after {
+      content: '»';
+      display: inline-block;
+      font-size: 0.875rem;
+      margin-inline: 1em;
+      transform: translateY(-2px);
     }
   }
 
