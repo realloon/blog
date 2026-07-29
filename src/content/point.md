@@ -130,3 +130,8 @@ fmt.Println(*point)  // #4
 ```
 
 观察上面的代码，回答哪两两打印相同。
+
+<details>
+  <summary>答案</summary>
+  <code>#1 #4; #2 #3</code>
+</details>
