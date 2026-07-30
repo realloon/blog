@@ -1,0 +1,25 @@
+---
+export interface Props {
+  title: string
+}
+
+const { title } = Astro.props
+---
+
+<header>
+  <a href="/">主页</a>
+  <div>
+    <h1>{title}</h1>
+    <slot />
+  </div>
+</header>
+
+<style>
+  div {
+    display: flex;
+    gap: 8px;
+
+    font-size: 2rem;
+    margin-block: 8px 24px;
+  }
+</style>

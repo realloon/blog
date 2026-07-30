@@ -1,26 +1,14 @@
 ---
 import Layout from '../../layouts/Layout.astro'
+import PageHeader from '../../components/PageHeader.astro'
 import Posts from '../../components/Posts.astro'
 import IconRssLine from '../../components/icons/IconRssLine.astro'
 ---
 
-<Layout>
-  <header>
-    <a href="/">主页</a>
-    <div>
-      <h1>Posts</h1>
-      <a href="/rss.xml"><IconRssLine /></a>
-    </div>
-  </header>
+<Layout title="Posts">
+  <PageHeader title="Posts">
+    <a href="/rss.xml"><IconRssLine /></a>
+  </PageHeader>
   <Posts />
 </Layout>
 
-<style>
-  div {
-    display: flex;
-    gap: 8px;
-
-    font-size: 2rem;
-    margin-block: 8px 24px;
-  }
-</style>
