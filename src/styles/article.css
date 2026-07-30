@@ -54,6 +54,7 @@ article sup {
 
 article img {
   max-width: 100%;
+  height: auto;
 }
 
 article blockquote {
