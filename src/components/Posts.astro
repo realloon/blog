@@ -37,6 +37,11 @@ function excerpt(markdown: string) {
     flex-direction: column;
     gap: 24px;
 
+    a:hover h2::after {
+      margin-inline-start: 8px;
+      opacity: 1;
+    }
+
     section {
       display: flex;
       flex-direction: column;
@@ -47,6 +52,16 @@ function excerpt(markdown: string) {
         font-weight: bold;
         line-height: 1.5;
         margin-bottom: 0.125rem;
+
+        &::after {
+          content: '»';
+          font-size: 0.875em;
+          vertical-align: top;
+
+          transition: 0.2s;
+          margin-inline-start: 4px;
+          opacity: 0;
+        }
       }
 
       p {
