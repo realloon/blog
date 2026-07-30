@@ -1,8 +1,23 @@
 ---
 import Layout from '../../layouts/Layout.astro'
 import Posts from '../../components/Posts.astro'
+import IconRss from '../../components/icons/IconRss.astro'
 ---
 
 <Layout>
+  <header>
+    <h1>Posts</h1>
+    <a href="/rss.xml"><IconRss /></a>
+  </header>
   <Posts />
 </Layout>
+
+<style>
+  header {
+    display: flex;
+    gap: 8px;
+
+    font-size: 2rem;
+    margin-bottom: 24px;
+  }
+</style>
