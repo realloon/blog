@@ -39,7 +39,7 @@ pubDate: 2026-07-31
 
 现在可是人工智能的时代，让 Agent 来分析再合适不过。
 
-GGPT 很快找到了 Cloudflare bot 在 5 月 26 日留下的提交：“Add Cloudflare Workers configuration”。在这次改动中，它安装了 `@astrojs/cloudflare@13.5.4` 和 Wrangler，创建了 `cloudflare/workers-autoconfig`，还写了几份配置文件。
+GPT 很快找到了 Cloudflare bot 在 5 月 26 日留下的提交：“Add Cloudflare Workers configuration”。在这次改动中，它安装了 `@astrojs/cloudflare@13.5.4` 和 Wrangler，创建了 `cloudflare/workers-autoconfig`，还写了几份配置文件。
 
 了解 `@astrojs/cloudflare` 13.5.4 变动，发现了关键：这个版本将 adapter 的构建输出固定为 `server`。
 
