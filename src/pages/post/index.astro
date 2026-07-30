@@ -6,18 +6,21 @@ import IconRssLine from '../../components/icons/IconRssLine.astro'
 
 <Layout>
   <header>
-    <h1>Posts</h1>
-    <a href="/rss.xml"><IconRssLine /></a>
+    <a href="/">主页</a>
+    <div>
+      <h1>Posts</h1>
+      <a href="/rss.xml"><IconRssLine /></a>
+    </div>
   </header>
   <Posts />
 </Layout>
 
 <style>
-  header {
+  div {
     display: flex;
     gap: 8px;
 
     font-size: 2rem;
-    margin-bottom: 24px;
+    margin-block: 8px 24px;
   }
 </style>
