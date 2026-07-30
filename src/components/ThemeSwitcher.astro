@@ -1,0 +1,175 @@
+---
+import IconDevice from '../components/icons/IconDevice.astro'
+import IconLight from './icons/IconLight.astro'
+import IconDark from './icons/IconDark.astro'
+import IconCheck from './icons/IconCheck.astro'
+---
+
+<script is:inline>
+  const userTheme = localStorage.getItem('user-theme') ?? 'light dark'
+  const systemTheme = matchMedia('(prefers-color-scheme: dark)').matches
+    ? 'dark'
+    : 'light'
+  const currentTheme = userTheme === 'light dark' ? systemTheme : userTheme
+
+  document.documentElement.style.colorScheme = userTheme
+  document.documentElement.dataset.currentTheme = currentTheme
+</script>
+
+<script>
+  const themeButtons = document.querySelectorAll<HTMLButtonElement>(
+    '#theme-select > [data-theme]',
+  )
+  const media = window.matchMedia('(prefers-color-scheme: dark)')
+
+  let userTheme = localStorage.getItem('user-theme') ?? 'light dark'
+
+  applyTheme(userTheme)
+
+  media.addEventListener('change', () => {
+    if (userTheme !== 'light dark') return
+    applyTheme(userTheme)
+  })
+
+  themeButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      userTheme = button.dataset.theme!
+      localStorage.setItem('user-theme', userTheme)
+      applyTheme(userTheme)
+    })
+  })
+
+  function applyTheme(userTheme: string) {
+    document.documentElement.style.colorScheme = userTheme
+
+    const systemTheme = media.matches ? 'dark' : 'light'
+    const currentTheme = userTheme === 'light dark' ? systemTheme : userTheme
+
+    document.documentElement.dataset.currentTheme = currentTheme
+
+    themeButtons.forEach(button => {
+      button.setAttribute(
+        'aria-pressed',
+        String(button.dataset.theme === userTheme),
+      )
+    })
+  }
+</script>
+
+<button
+  class="theme-btn-wrap"
+  popovertarget="theme-select"
+  aria-label="select theme"
+>
+  <IconLight />
+  <IconDark />
+</button>
+<div id="theme-select" popover>
+  <button
+    popovertarget="theme-select"
+    popovertargetaction="hide"
+    data-theme="light dark"
+  >
+    <IconDevice />
+    <span>系统</span>
+    <IconCheck />
+  </button>
+  <button
+    popovertarget="theme-select"
+    popovertargetaction="hide"
+    data-theme="light"
+  >
+    <IconLight style="transform: translateY(-1px);" />
+    <span>浅色</span>
+    <IconCheck />
+  </button>
+  <button
+    popovertarget="theme-select"
+    popovertargetaction="hide"
+    data-theme="dark"
+  >
+    <IconDark style="transform: translateY(-1px);" />
+    <span>深色</span>
+    <IconCheck />
+  </button>
+</div>
+
+<style>
+  .theme-btn-wrap {
+    position: relative;
+    anchor-name: --theme-btn;
+
+    padding: unset;
+    border: unset;
+    background-color: transparent;
+    cursor: pointer;
+
+    svg {
+      opacity: 0;
+    }
+
+    svg:last-of-type {
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+  }
+
+  :global(:root[data-current-theme='light']) .theme-btn-wrap svg:first-of-type {
+    opacity: 1;
+  }
+
+  :global(:root[data-current-theme='dark']) .theme-btn-wrap svg:last-of-type {
+    opacity: 1;
+  }
+
+  #theme-select {
+    position-anchor: --theme-btn;
+    position-area: bottom span-left;
+    top: 8px;
+    right: -8px;
+
+    padding: 2px;
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    box-shadow: 0 2px 8px 0 #00000016;
+
+    button {
+      display: flex;
+      align-items: center;
+
+      font-size: 0.875rem;
+      font-family: inherit;
+      line-height: 1;
+
+      padding-inline: 8px;
+      padding-block: 8px;
+      border: unset;
+      border-radius: 10px;
+      cursor: pointer;
+
+      transition: 0.2s;
+      background-color: transparent;
+
+      &:hover {
+        background-color: color-mix(
+          in srgb,
+          var(--color-page) 93%,
+          var(--color-font)
+        );
+      }
+
+      span {
+        margin-inline: 8px 12px;
+      }
+
+      svg:last-of-type {
+        opacity: 0;
+      }
+
+      &[aria-pressed='true'] svg:last-of-type {
+        opacity: 1;
+      }
+    }
+  }
+</style>
