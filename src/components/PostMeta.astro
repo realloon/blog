@@ -4,9 +4,10 @@ import { countMixed } from '../utils'
 
 interface Props {
   post: CollectionEntry<'blog'>
+  history?: boolean
 }
 
-const { post } = Astro.props
+const { post, history = false } = Astro.props
 
 const formater = Intl.DateTimeFormat('zh', {
   dateStyle: 'medium',
@@ -18,6 +19,15 @@ const formater = Intl.DateTimeFormat('zh', {
     {formater.format(post.data.pubDate)}
   </time>
   <span>{countMixed(post.body ?? '')}字</span>
+  {
+    history && (
+      <a
+        href={`https://github.com/realloon/blog/commits/main/${post.filePath}`}
+      >
+        修订历史
+      </a>
+    )
+  }
 </div>
 
 <style>
