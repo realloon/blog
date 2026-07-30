@@ -56,48 +56,51 @@ import IconCheck from './icons/IconCheck.astro'
   }
 </script>
 
-<button
-  class="theme-btn-wrap"
-  popovertarget="theme-select"
-  aria-label="select theme"
->
-  <IconLight />
-  <IconDark />
-</button>
-<div id="theme-select" popover>
+<div>
   <button
+    class="theme-btn-wrap"
     popovertarget="theme-select"
-    popovertargetaction="hide"
-    data-theme="light dark"
+    aria-label="select theme"
   >
-    <IconDevice />
-    <span>系统</span>
-    <IconCheck />
+    <IconLight />
+    <IconDark />
   </button>
-  <button
-    popovertarget="theme-select"
-    popovertargetaction="hide"
-    data-theme="light"
-  >
-    <IconLight style="transform: translateY(-1px);" />
-    <span>浅色</span>
-    <IconCheck />
-  </button>
-  <button
-    popovertarget="theme-select"
-    popovertargetaction="hide"
-    data-theme="dark"
-  >
-    <IconDark style="transform: translateY(-1px);" />
-    <span>深色</span>
-    <IconCheck />
-  </button>
+  <div id="theme-select" popover>
+    <button
+      popovertarget="theme-select"
+      popovertargetaction="hide"
+      data-theme="light dark"
+    >
+      <IconDevice />
+      <span>系统</span>
+      <IconCheck />
+    </button>
+    <button
+      popovertarget="theme-select"
+      popovertargetaction="hide"
+      data-theme="light"
+    >
+      <IconLight style="transform: translateY(-1px);" />
+      <span>浅色</span>
+      <IconCheck />
+    </button>
+    <button
+      popovertarget="theme-select"
+      popovertargetaction="hide"
+      data-theme="dark"
+    >
+      <IconDark style="transform: translateY(-1px);" />
+      <span>深色</span>
+      <IconCheck />
+    </button>
+  </div>
 </div>
 
 <style>
   .theme-btn-wrap {
     position: relative;
     anchor-name: --theme-btn;
+    vertical-align: top;
 
     padding: unset;
     border: unset;
@@ -125,9 +128,9 @@ import IconCheck from './icons/IconCheck.astro'
 
   #theme-select {
     position-anchor: --theme-btn;
-    position-area: bottom span-left;
+    position-area: bottom span-right;
     top: 8px;
-    right: -8px;
+    left: -8px;
 
     padding: 2px;
     border: 1px solid var(--color-border);
