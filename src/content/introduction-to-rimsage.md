@@ -13,7 +13,7 @@ pubDate: 2026-1-27
 
 上下文越长，模型表现越差。理想情况下，应提供给LLM尽可能少的必要消息。尽管不是越短的上下文越好，但更长的上下文往往是坏味道。无关的、冗余的信息只是噪音，它们不仅浪费 Tokens，还会降低 LLM 的输出表现[^1]：
 
-<img width="1198px" height="992px" src="https://www.humanlayer.dev/blog/writing-a-good-claude-md/instructionfollowing.png" alt="instructionfollowing" />
+<img width="1198px" height="992px" src="https://www.humanlayer.dev/blog/writing-a-good-claude-md/instructionfollowing.png" alt="instructionfollowing" loading="lazy" />
 
 业界早有解决上述问题的成熟方案，即建立代码库索引。实际上，你用 Argument Code、Cursor 或 Claude Code 等 AI 客户端打开 RimWorld 的源码仓库，你就享受到了。但这仍存在一些不足之处。首先，这要求你反编译一份 RimWorld 源码，并将其作为Agent的工作目录，这就存在不便之处。其次，这种检索方式基于通用方案，未对 RimWorld 的特定架构做针对设计，效率较差。再者，面对如此庞大的体量，不仅难以保证检索的质量和效果，还会消耗大量 Tokens。
 

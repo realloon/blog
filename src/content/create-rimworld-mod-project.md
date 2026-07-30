@@ -15,7 +15,7 @@ RimWorld 1.6 版本在底层上做了一些改进，我们制作模组时也可�
 
 打开 Rider，点击左下角的“配置”，再点击“设置”：
 
-<img style="height: 400px" src="https://oss-1259210922.cos.ap-nanjing.myqcloud.com/RimWorld-Mod-Project/配置浮动菜单项目.avif" alt="配置浮动菜单项目" />
+<img style="height: 400px" src="https://oss-1259210922.cos.ap-nanjing.myqcloud.com/RimWorld-Mod-Project/配置浮动菜单项目.avif" alt="配置浮动菜单项目" loading="lazy" />
 
 在侧边栏中点击“环境”，你会看到：
 

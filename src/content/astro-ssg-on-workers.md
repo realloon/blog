@@ -15,7 +15,7 @@ pubDate: 2026-07-31
 
 部署时没细看，弄成部署在 Workers 上了，当时的场景大概是这样：
 
-<img src="https://oss-1259210922.cos.ap-nanjing.myqcloud.com/Cloudflare/WorkersOrPages" width="991px" height="670px" alt="Workers Or Pages" />
+<img src="https://oss-1259210922.cos.ap-nanjing.myqcloud.com/Cloudflare/WorkersOrPages" width="991px" height="670px" alt="Workers Or Pages" loading="lazy" />
 
 全然没注意到底部的 Pages 入口，将 Astro SSG 项目部署到了 Workers。
 
@@ -29,7 +29,7 @@ pubDate: 2026-07-31
 
 没想到，这次不再有 PR，直接就部署好了。看到这里更是令我开心：
 
-<img src="https://oss-1259210922.cos.ap-nanjing.myqcloud.com/Cloudflare/OnlyStaticAssets" width="1148" height="266" alt="Only Static Assets" />
+<img src="https://oss-1259210922.cos.ap-nanjing.myqcloud.com/Cloudflare/OnlyStaticAssets" width="1148" height="266" alt="Only Static Assets" loading="lazy" />
 
 只有静态资产的 Worker 是被原生支持的！
 
