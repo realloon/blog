@@ -1,7 +1,3 @@
-export const formater = Intl.DateTimeFormat('zh', {
-  dateStyle: 'medium',
-})
-
 const segmenter = new Intl.Segmenter('zh', {
   granularity: 'word',
 })

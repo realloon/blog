@@ -1,8 +1,89 @@
 ---
 import Layout from '../layouts/Layout.astro'
 import PageHeader from '../components/PageHeader.astro'
+import IconGithub from '../components/icons/IconGithub.astro'
+import IconSteam from '../components/icons/IconSteam.astro'
+import IconDiscord from '../components/icons/IconDiscord.astro'
+
+export const formater = Intl.DateTimeFormat('zh', {
+  dateStyle: 'medium',
+  timeStyle: 'short',
+})
 ---
 
 <Layout title="About">
   <PageHeader title="About" />
+
+  <article>
+    <h2>关于我</h2>
+    <p>我是 Vortex，兴趣驱动的个人开发者。</p>
+
+    <h2>技术栈</h2>
+    <p>
+      以 TypeScript 为主要开发语言，掌握 Vue、React、Astro、Nuxt 等前端框架。
+    </p>
+    <p>具备前后端开发、部署及运维能力，维护着多个全栈项目。</p>
+    <p>使用 C# 开发 RimWorld Mod 及 CLI 应用。</p>
+
+    <h2>个人代表项目</h2>
+    <ul>
+      <li><a href="https://github.com/realloon/RimSage">RimSage</a></li>
+      <li>
+        <a href="https://github.com/realloon/CustomizeWeapon"
+          >Customize Weapon</a
+        >
+      </li>
+      <li><a href="">Markflow & Aura</a></li>
+    </ul>
+
+    <h2>找到我</h2>
+    <ul class="link">
+      <li>
+        <a href="https://github.com/realloon">
+          <IconGithub />
+          <span>我开发的项目</span>
+        </a>
+      </li>
+      <li>
+        <a href="https://steamcommunity.com/id/sincerajn/">
+          <IconSteam />
+          <span>我发布的 RimWorld Mod</span>
+        </a>
+      </li>
+      <li>
+        <a href="https://discord.com/users/muyun8281">
+          <IconDiscord />
+          <span>在 Discord 上联系我</span>
+        </a>
+      </li>
+    </ul>
+
+    <h2>关于本站</h2>
+    <p>本站使用 Astro 框架开发，部署于 Cloudflare Pages。</p>
+    <p>
+      本站界面设计受 <a href="https://ramsayleung.github.io/"
+        >Ramsay’s personal blog</a
+      > 启发，感谢作者 <a href="https://github.com/ramsayleung">ramsayleung</a
+      >。
+    </p>
+    <p>最近构建于：{formater.format(new Date())}。</p>
+
+    <h2>友链</h2>
+    <ul>
+      <li><a href="https://2x.nz">二叉树树</a></li>
+    </ul>
+  </article>
 </Layout>
+
+<style>
+  .link {
+    list-style-type: none;
+    padding-inline-start: 0.5em;
+
+    a {
+      width: fit-content;
+      display: flex;
+      gap: 0.5em;
+    }
+  }
+</style>
