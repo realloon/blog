@@ -7,8 +7,8 @@ export const GET: APIRoute = async context => {
   posts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
 
   return rss({
-    title: "Vortex's blog",
-    description: "Recent content on Vortex's blog",
+    title: "Realloon's blog",
+    description: "Recent content on Realloon's blog",
     site: context.site!,
     items: posts.map(post => ({
       title: post.data.title,
