@@ -9,14 +9,14 @@ interface Props {
 
 const { post, history = false } = Astro.props
 
-const formater = Intl.DateTimeFormat('zh', {
+const formatter = Intl.DateTimeFormat('zh-CN', {
   dateStyle: 'medium',
 })
 ---
 
 <div class="meta">
   <time datetime={post.data.pubDate.toISOString()}>
-    {formater.format(post.data.pubDate)}
+    {formatter.format(post.data.pubDate)}
   </time>
   <span>{countMixed(post.body ?? '')}字</span>
   {

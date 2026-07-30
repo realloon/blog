@@ -5,7 +5,7 @@ import IconGithub from '../components/icons/IconGithub.astro'
 import IconSteam from '../components/icons/IconSteam.astro'
 import IconDiscord from '../components/icons/IconDiscord.astro'
 
-export const formater = Intl.DateTimeFormat('zh', {
+const formatter = Intl.DateTimeFormat('zh-CN', {
   dateStyle: 'medium',
   timeStyle: 'short',
 })
@@ -72,7 +72,7 @@ const date = new Date()
     </p>
     <p>
       最近构建于：<time datetime={date.toISOString()}
-        >{formater.format(date)}</time
+        >{formatter.format(date)}</time
       > 。
     </p>
   </article>
