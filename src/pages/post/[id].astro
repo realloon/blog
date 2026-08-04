@@ -11,6 +11,31 @@ interface Props {
 
 const { post } = Astro.props
 const { Content } = await render(post)
+const siteUrl = Astro.site!
+const breadcrumb = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: '主页',
+      item: new URL('/', siteUrl).href,
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: '文章',
+      item: new URL('/post', siteUrl).href,
+    },
+    {
+      '@type': 'ListItem',
+      position: 3,
+      name: post.data.title,
+      item: new URL(Astro.url.pathname, siteUrl).href,
+    },
+  ],
+}
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog')
@@ -42,6 +67,12 @@ export async function getStaticPaths() {
     <IconBack />
     <span>返回</span>
   </a>
+
+  <script
+    is:inline
+    type="application/ld+json"
+    set:html={JSON.stringify(breadcrumb).replace(/</g, '\\u003c')}
+  />
 </Layout>
 
 <style>
