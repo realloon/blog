@@ -18,3 +18,14 @@ export function countMixed(text: string) {
 
   return count
 }
+
+export function excerpt(markdown: string) {
+  return markdown
+    .replace(/## \S+\n/g, '')
+    .replace(/> /g, '')
+    .replace(/```.*?```/gs, '[代码]。')
+    .replace(/!\[[^\]]*\]\(\S*\)/g, '[图片]。')
+    .replace(/\[([^\]]*)\]\(\S*\)/g, '$1')
+    .replace(/\s\s+/g, '')
+    .slice(0, 140)
+}
