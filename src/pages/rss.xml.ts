@@ -10,10 +10,11 @@ export const GET: APIRoute = async context => {
     title: "Realloon's blog",
     description: "Recent content on Realloon's blog",
     site: context.site!,
+    trailingSlash: false,
     items: posts.map(post => ({
       title: post.data.title,
       pubDate: post.data.pubDate,
-      link: `/post/${post.id}/`,
+      link: `/post/${post.id}`,
       content: post.rendered!.html,
     })),
     customData: '<language>zh-CN</language>',
